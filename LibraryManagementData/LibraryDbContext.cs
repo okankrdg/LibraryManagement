@@ -19,6 +19,7 @@ namespace LibraryManagementData
         public DbSet<Status> Statuses { get; set; }
         public DbSet<LibraryAsset> LibraryAssets { get; set; }
         public DbSet<Hold> Holds { get; set; }
+        public DbSet<Book> Books { get; set; }
 
     }
     //https://www.gencayyildiz.com/blog/net-core-class-libraryde-migration-islemleri/
