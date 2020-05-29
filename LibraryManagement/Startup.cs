@@ -28,7 +28,8 @@ namespace LibraryManagement
         {
             services.AddMvc();
             services.AddSingleton(Configuration);
-            services.AddScoped<ILibraryAsset, LibraryAssetsServices>();
+            services.AddScoped<ILibraryAsset, LibraryAssetsService>();
+            services.AddScoped<ICheckout, CheckOutService>();
             services.AddDbContext<LibraryDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
         }
 

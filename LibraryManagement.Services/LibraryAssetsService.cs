@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace LibraryManagement.Services
 {
-    public class LibraryAssetsServices : ILibraryAsset
+    public class LibraryAssetsService : ILibraryAsset
     {
         private LibraryDbContext _context;
-        public LibraryAssetsServices(LibraryDbContext context)
+        public LibraryAssetsService(LibraryDbContext context)
         {
             _context = context;
         }
