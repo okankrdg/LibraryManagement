@@ -102,7 +102,7 @@ namespace LibraryManagement.Services
         }
 
 
-        public void CheckInItem(int assetId, int LibraryCardId)
+        public void CheckInItem(int assetId)
         {
             var now = DateTime.Now;
             var item = _context.LibraryAssets
@@ -125,7 +125,11 @@ namespace LibraryManagement.Services
                 CheckoutToEarliestHold(assetId,currentHolds);
             }
             //otherwise, update the item status available
-            UpdateAssetStatus(assetId, "Available");
+            else
+            {
+
+                UpdateAssetStatus(assetId, "Available");
+            }
             _context.SaveChanges();
         }
 
@@ -180,7 +184,7 @@ namespace LibraryManagement.Services
             return now.AddDays(30);
         }
 
-        private bool IsCheckedOut(int assetId)
+        public bool IsCheckedOut(int assetId)
         {
             var isCheckedOut = _context.Checkouts.Where(co => co.LibraryAsset.Id == assetId).Any();
             return isCheckedOut;
@@ -191,8 +195,8 @@ namespace LibraryManagement.Services
             var now = DateTime.Now;
             var asset = _context.LibraryAssets
                 .FirstOrDefault(a => a.Id == assetId);
-            var card = _context.LibraryCards.FirstOrDefault(c => c.Id == assetId);
-            if (asset.Status.Name=="Available")
+            var card = _context.LibraryCards.FirstOrDefault(c => c.Id == LibraryCardId);
+            if (asset.Status?.Name=="Available")
             {
                 UpdateAssetStatus(assetId, "On Hold");
             }

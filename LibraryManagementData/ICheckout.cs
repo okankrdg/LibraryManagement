@@ -17,9 +17,10 @@ namespace LibraryManagementData
         Checkout GetLatestCheckout(int assetId);
         string GetCurrentHoldPatronName(int id);
         string GetCurrentCheckoutPatron(int assetId);
+        bool IsCheckedOut(int id);
 
         void CheckOutItem(int assetId, int libraryCardId);
-        void CheckInItem(int assetId, int LibraryCardId);
+        void CheckInItem(int assetId);
         void PlaceHold(int assetId, int LibraryCardId);
        
        
